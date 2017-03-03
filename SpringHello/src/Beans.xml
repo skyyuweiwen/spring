@@ -33,7 +33,7 @@
 		<property name="message1" value="Hello Parent World 1 !" />
 	</bean>
 
-	<bean id="child" class="com.tutorialspoint.spinherit.Child" 
+	<bean id="child" class="com.tutorialspoint.spinherit.Child" parent="parent"
 		init-method="init" destroy-method="destroy">
 		<property name="message1" value="Hello child World 1 !" />
 		<property name="message3" value="Hello child World 3 !" />
