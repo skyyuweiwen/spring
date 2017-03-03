@@ -24,14 +24,20 @@
 		<property name="message" value="Hello LifeCycle" />
 	</bean>
 
-	<bean id="parent" class="com.tutorialspoint.spinherit.Parent">
+   <bean id="beanTeamplate" abstract="true">
+      <property name="message1" value="Hello World!"/>
+      <property name="message2" value="Namaste India!!"/>
+   </bean>
+
+	<bean id="parent" class="com.tutorialspoint.spinherit.Parent" parent="beanTeamplate">
 		<property name="message1" value="Hello Parent World 1 !" />
-		<property name="message2" value="Hello Parent World 2 !" />
 	</bean>
 
-	<bean id="child" class="com.tutorialspoint.spinherit.Child" parent="parent"
+	<bean id="child" class="com.tutorialspoint.spinherit.Child" 
 		init-method="init" destroy-method="destroy">
 		<property name="message1" value="Hello child World 1 !" />
 		<property name="message3" value="Hello child World 3 !" />
 	</bean>
+	
+	
 </beans>
