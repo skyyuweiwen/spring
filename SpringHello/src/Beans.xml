@@ -19,4 +19,9 @@
 		<property name="message" value="Hello prototype World!" />
 	</bean>
 
+	<bean id="lifecycle" class="com.tutorialspoint.lifecycle.LifeCycle"
+		init-method="init" destroy-method="destroy">
+		<property name="message" value="Hello LifeCycle" />
+	</bean>
+
 </beans>
