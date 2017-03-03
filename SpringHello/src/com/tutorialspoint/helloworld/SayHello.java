@@ -1,10 +1,10 @@
 package com.tutorialspoint.helloworld;
 
-import com.tutorialspoint.loader.ContainerLoader;
+import org.springframework.context.support.AbstractApplicationContext;
 
-public class SayHello extends ContainerLoader{
+public class SayHello{
 	
-	public void sayhello() {
+	public void sayhello(AbstractApplicationContext context) {
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		obj.getMessage();
 	}

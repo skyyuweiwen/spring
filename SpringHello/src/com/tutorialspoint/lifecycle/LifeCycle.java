@@ -5,10 +5,10 @@ import com.tutorialspoint.helloworld.HelloWorld;
 public class LifeCycle extends HelloWorld{
 	
 	public void init(){
-		System.out.println("Bean is going through init.");
+		System.out.println("LifeCycle is going through init.");
 	}
 
 	public void destroy() {
-		System.out.println("Bean will destroy now.");
+		System.out.println("LifeCycle will destroy now.");
 	}
 }

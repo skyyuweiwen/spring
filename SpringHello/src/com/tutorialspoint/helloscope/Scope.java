@@ -1,11 +1,11 @@
 package com.tutorialspoint.helloscope;
 
+import org.springframework.context.support.AbstractApplicationContext;
 import com.tutorialspoint.helloworld.HelloWorld;
-import com.tutorialspoint.loader.ContainerLoader;
 
-public class Scope extends ContainerLoader{
+public class Scope {
 
-	public void DiffOfScope() {
+	public void DiffOfScope(AbstractApplicationContext context) {
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorldsingleton");
 		obj.setMessage("Hello Kitty!!");
 		obj.getMessage();

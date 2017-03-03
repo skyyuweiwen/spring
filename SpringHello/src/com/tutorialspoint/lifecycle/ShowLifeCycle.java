@@ -6,9 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.tutorialspoint.helloworld.HelloWorld;
 
 public class ShowLifeCycle {
-	public void showlifecycle() {
-		@SuppressWarnings("resource")
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+	public void showlifecycle(AbstractApplicationContext context) {
+
 		HelloWorld obj = (LifeCycle) context.getBean("lifecycle");
 		obj.getMessage();
 		context.registerShutdownHook();
