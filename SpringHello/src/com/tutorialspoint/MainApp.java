@@ -3,6 +3,7 @@ package com.tutorialspoint;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tutorialspoint.di.Di;
 import com.tutorialspoint.helloscope.Scope;
 import com.tutorialspoint.helloworld.SayHello;
 import com.tutorialspoint.lifecycle.ShowLifeCycle;
@@ -24,5 +25,8 @@ public class MainApp {
 	   
 	   ShowInherit shouinherit = new ShowInherit();
 	   shouinherit.showinherit(context);
+	   
+	   Di di = new Di();
+	   di.showdi(context);
    }
 }
