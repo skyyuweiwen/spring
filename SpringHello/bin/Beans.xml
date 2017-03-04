@@ -24,20 +24,78 @@
 		<property name="message" value="Hello LifeCycle" />
 	</bean>
 
-   <bean id="beanTeamplate" abstract="true">
-      <property name="message1" value="Hello World!"/>
-      <property name="message2" value="Namaste India!!"/>
-   </bean>
+	<bean id="beanTeamplate" abstract="true">
+		<property name="message1" value="Hello World!" />
+		<property name="message2" value="Namaste India!!" />
+	</bean>
 
-	<bean id="parent" class="com.tutorialspoint.spinherit.Parent" parent="beanTeamplate">
+	<bean id="parent" class="com.tutorialspoint.spinherit.Parent"
+		parent="beanTeamplate">
 		<property name="message1" value="Hello Parent World 1 !" />
 	</bean>
 
-	<bean id="child" class="com.tutorialspoint.spinherit.Child" parent="parent"
-		init-method="init" destroy-method="destroy">
+	<bean id="child" class="com.tutorialspoint.spinherit.Child"
+		parent="parent" init-method="init" destroy-method="destroy">
 		<property name="message1" value="Hello child World 1 !" />
 		<property name="message3" value="Hello child World 3 !" />
 	</bean>
-	
-	
+
+	<!-- for constructor way for di <bean id="textEditor" class="com.tutorialspoint.di.TextEditor"> 
+		<constructor-arg ref="spellChecker" /> </bean> <bean id="spellChecker" class="com.tutorialspoint.di.SpellChecker"> 
+		</bean> -->
+
+	<!-- for inner bean fo di <bean id="textEditor" class="com.tutorialspoint.di.TextEditor"> 
+		<property name="spellChecker"> <bean id="spellChecker" class="com.tutorialspoint.di.SpellChecker"/> 
+		</property> </bean> -->
+	<bean id="spellChecker" class="com.tutorialspoint.di.SpellChecker">
+	</bean>
+
+	<bean id="textEditor" class="com.tutorialspoint.di.TextEditor"  autowire="byType">
+		<property name="name" value="Generic Text Editor" />
+	</bean>
+
+	<bean id="javaCollection" class="com.tutorialspoint.di.JavaCollection">
+
+		<!-- results in a setAddressList(java.util.List) call -->
+		<property name="addressList">
+			<list>
+				<value>INDIA</value>
+				<value>Pakistan</value>
+				<value>USA</value>
+				<value>USA</value>
+			</list>
+		</property>
+
+		<!-- results in a setAddressSet(java.util.Set) call -->
+		<property name="addressSet">
+			<set>
+				<value>INDIA</value>
+				<value>Pakistan</value>
+				<value>USA</value>
+				<value>USA</value>
+			</set>
+		</property>
+
+		<!-- results in a setAddressMap(java.util.Map) call -->
+		<property name="addressMap">
+			<map>
+				<entry key="1" value="INDIA" />
+				<entry key="2" value="Pakistan" />
+				<entry key="3" value="USA" />
+				<entry key="4" value="USA" />
+			</map>
+		</property>
+
+		<!-- results in a setAddressProp(java.util.Properties) call -->
+		<property name="addressProp">
+			<props>
+				<prop key="one">INDIA</prop>
+				<prop key="two">Pakistan</prop>
+				<prop key="three">USA</prop>
+				<prop key="four">USA</prop>
+			</props>
+		</property>
+
+	</bean>
+
 </beans>
