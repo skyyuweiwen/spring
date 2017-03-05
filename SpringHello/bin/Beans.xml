@@ -23,8 +23,9 @@
 		<property name="message" value="Hello prototype World!" />
 	</bean>
 
-	<bean id="lifecycle" class="com.tutorialspoint.lifecycle.LifeCycle"
-		init-method="init" destroy-method="destroy">
+	<bean id="lifecycle" class="com.tutorialspoint.lifecycle.LifeCycle">
+		<!--  init-method="init" destroy-method="destroy"-->
+		
 		<property name="message" value="Hello LifeCycle" />
 	</bean>
 
@@ -52,6 +53,11 @@
 		<property name="spellChecker"> <bean id="spellChecker" class="com.tutorialspoint.di.SpellChecker"/> 
 		</property> </bean> -->
 	<bean id="spellChecker" class="com.tutorialspoint.di.SpellChecker">
+		<property name="a" value="2" />
+	</bean>
+
+	<bean id="spellChecker1" class="com.tutorialspoint.di.SpellChecker">
+		<property name="a" value="1" />
 	</bean>
 
 	<bean id="textEditor" class="com.tutorialspoint.di.TextEditor" >
