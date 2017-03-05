@@ -4,7 +4,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 public class Di {
 	public void showdi(AbstractApplicationContext context) {
-		context.getBean("spellChecker");
+		//context.getBean("spellChecker");
 		TextEditor te = (TextEditor) context.getBean("textEditor");
 		te.spellCheck();
 		
