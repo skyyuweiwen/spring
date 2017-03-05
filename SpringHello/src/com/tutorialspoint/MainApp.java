@@ -3,6 +3,7 @@ package com.tutorialspoint;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tutorialspoint.annotation.ShowAnnotation;
 import com.tutorialspoint.di.Di;
 import com.tutorialspoint.helloscope.Scope;
 import com.tutorialspoint.helloworld.SayHello;
@@ -28,5 +29,8 @@ public class MainApp {
 	   
 	   Di di = new Di();
 	   di.showdi(context);
+	   
+	   ShowAnnotation showannotation = new ShowAnnotation();
+	   showannotation.showAnnotation(context);
    }
 }
