@@ -40,5 +40,6 @@ public class MainApp {
 
 		ShowConfig showconfig = new ShowConfig();
 		showconfig.showconfig(context);
+		
 	}
 }
