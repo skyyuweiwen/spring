@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+
+	<aop:config>
+		<aop:aspect id="log" ref="logging">
+			<aop:pointcut id="selectAll"
+				expression="execution(* com.tutorialspoint.annotation.Student.*(..))" />
+			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
+			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
+
+		</aop:aspect>
+	</aop:config>
 
 	<context:annotation-config />
 
@@ -24,8 +38,8 @@
 	</bean>
 
 	<bean id="lifecycle" class="com.tutorialspoint.lifecycle.LifeCycle">
-		<!--  init-method="init" destroy-method="destroy"-->
-		
+		<!-- init-method="init" destroy-method="destroy" -->
+
 		<property name="message" value="Hello LifeCycle" />
 	</bean>
 
@@ -60,7 +74,7 @@
 		<property name="a" value="1" />
 	</bean>
 
-	<bean id="textEditor" class="com.tutorialspoint.di.TextEditor" >
+	<bean id="textEditor" class="com.tutorialspoint.di.TextEditor">
 		<property name="name" value="Generic Text Editor" />
 	</bean>
 
@@ -112,4 +126,10 @@
 		<property name="name" value="Zara" />
 		<property name="age" value="11" />
 	</bean>
+
+	<bean id="cStartEventHandler" class="com.tutorialspoint.event.CStartEventHandler" />
+
+	<bean id="cStopEventHandler" class="com.tutorialspoint.event.CStopEventHandler" />
+
+	<bean id="logging" class="com.tutorialspoint.annotation.Logging" />
 </beans>
