@@ -8,7 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.example.restart.dao.ProductDao;
 import com.example.restart.entity.Product;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DefaultProductDao implements ProductDao {
 
     @Autowired

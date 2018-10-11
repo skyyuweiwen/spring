@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.restart.dao.ProductDao;
 import com.example.restart.entity.Product;
 import com.example.restart.service.ProductService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultProductService implements ProductService {
 
     @Autowired
