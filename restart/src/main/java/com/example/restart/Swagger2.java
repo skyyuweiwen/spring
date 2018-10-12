@@ -2,6 +2,7 @@ package com.example.restart;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -25,7 +26,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.restart")) //以扫描包的方式
+                .apis(RequestHandlerSelectors.basePackage("com.example.restart.controller")) //以扫描包的方式
                 .paths(PathSelectors.any())
                 .build();
     }

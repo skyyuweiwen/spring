@@ -26,9 +26,10 @@ public class ProductController {
         
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    public String updateProduct(@PathVariable("id")int id, @RequestParam(value = "name", required = true)String name ,
-                                @RequestParam(value = "price", required = true)String price,
+    @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
+    public String updateProduct(@PathVariable("id")int id,
+                                @RequestParam(value = "name", required = false)String name ,
+                                @RequestParam(value = "price", required = false)String price,
                                 @RequestParam(value = "description", required = false)String description){
         Product product = new Product();
         product.setId(id);
@@ -42,10 +43,10 @@ public class ProductController {
             return "update fail";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addProduct(@RequestParam(value = "id", required = true)int id,
-                             @RequestParam(value = "name",required = true)String name,
-                             @RequestParam(value = "price", required = true)String price,
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String addProduct(@RequestParam(value = "id")int id,
+                             @RequestParam(value = "name")String name,
+                             @RequestParam(value = "price")String price,
                              @RequestParam(value = "description", required = false)String description){
         Product product = new Product();
         product.setId(id);
@@ -57,5 +58,14 @@ public class ProductController {
             return product.toString();
         else
             return "add fail";
+    }
+
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
+    public String deleteProduct(@PathVariable(value = "id")int id){
+        if(productService.delete(id) == 1)
+            return "delete success";
+        else
+            return "delete fail";
+
     }
 }
