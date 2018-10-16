@@ -18,13 +18,13 @@ public class DefaultProductDao implements ProductDao {
 
     @Override
     public int add(Product product) {
-        return jdbcTemplate.update("insert into Product(id, name, price, description) value(?, ?, ?, ?)",
+        return jdbcTemplate.update("insert into product(id, name, price, description) value(?, ?, ?, ?)",
                 product.getId(), product.getName(), product.getPrice(), product.getDescription());
     }
 
     @Override
     public int update(Product product) {
-        return jdbcTemplate.update("UPDATE Product SET name=? ,price=? ,description=? where id=?",
+        return jdbcTemplate.update("UPDATE product SET name=? ,price=? ,description=? where id=?",
                  product.getName(), product.getPrice(), product.getDescription(), product.getId());
     }
 
@@ -44,10 +44,11 @@ public class DefaultProductDao implements ProductDao {
 
     @Override
     public List<Product> findProductList() {
-        List<Product> productList = jdbcTemplate.query("select * from Product", new Object[]{}, new BeanPropertyRowMapper(Product.class));
+        List<Product> productList = jdbcTemplate.query("select * from product", new Object[]{}, new BeanPropertyRowMapper(Product.class));
         if(productList!=null && productList.size()>0)
             return productList;
         else
             return null;
     }
+
 }

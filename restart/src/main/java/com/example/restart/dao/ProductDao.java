@@ -33,4 +33,5 @@ public interface  ProductDao {
      * @return all product in a list
      */
     List<Product> findProductList();
+
 }
