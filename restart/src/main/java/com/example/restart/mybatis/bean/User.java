@@ -1,8 +1,9 @@
 package com.example.restart.mybatis.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
 
     private int id;
     private String username;
@@ -10,6 +11,13 @@ public class User {
     private Date ctm;
 
     public User(){
+    }
+
+    public User(int id, String username, int age){
+        this.id = id;
+        this.username = username;
+        this.age = age;
+        this.ctm = new Date();
     }
 
     public User(String username, int age){
