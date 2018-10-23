@@ -1,10 +1,7 @@
 package com.example.restart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.restart.Entity.Person;
 import com.example.restart.Repository.PersonRepository;
@@ -26,4 +23,8 @@ public class PersonController {
         personRepository.deleteById(id);
     }
 
+    @GetMapping(path = "getPerson")
+    public Person getPerson(String name){
+        return personRepository.findByName(name);
+    }
 }
