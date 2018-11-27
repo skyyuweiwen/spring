@@ -1,3 +1,8 @@
 spring:
   profiles:
     active: prod
+  redis:
+    host: 127.0.0.1
+    jedis:
+      pool:
+        max-active: 8

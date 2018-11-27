@@ -3,6 +3,8 @@ package com.example.restart.dao.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,12 +19,14 @@ public class DefaultProductDao implements ProductDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
+    @Cacheable("product")
     public int add(Product product) {
         return jdbcTemplate.update("insert into product(id, name, price, description) value(?, ?, ?, ?)",
                 product.getId(), product.getName(), product.getPrice(), product.getDescription());
     }
 
     @Override
+    @CachePut("product")
     public int update(Product product) {
         return jdbcTemplate.update("UPDATE product SET name=? ,price=? ,description=? where id=?",
                  product.getName(), product.getPrice(), product.getDescription(), product.getId());
